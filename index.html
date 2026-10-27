@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarineParts | Marine Supply Marketplace</title>
+<meta name="description" content="Discover marine spare parts and connect with suppliers worldwide.">
+<style>
+:root{--navy:#061c36;--blue:#078cff;--light:#f1f6fc;--text:#102746}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f7f9fc}
+button,input{font:inherit}
+button,a{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1160px,92%);margin:auto}
+header{background:var(--navy);color:white}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;flex-wrap:wrap}
+.logo{font-size:25px;font-weight:bold;color:white}
+.logo span{color:#159cff}
+.actions{display:flex;gap:9px;align-items:center}
+.btn{border:0;border-radius:6px;padding:11px 15px;font-weight:bold}
+.primary{background:var(--blue);color:white}
+.outline{border:1px solid #7da1c5;color:white;background:transparent}
+nav{display:flex;gap:25px;padding:13px 0;overflow:auto;white-space:nowrap;font-size:13px}
+nav a:hover{color:#54b8ff}
+.hero{color:white;background:linear-gradient(90deg,#04182feF,#062b4dd9,#062b4d55),url('https://images.unsplash.com/photo-1496939376851-89342e90adcd?auto=format&fit=crop&w=1800&q=85') center/cover;min-height:390px;display:flex;align-items:center}
+.hero-inner{padding-top:35px;padding-bottom:35px}
+.eyebrow{font-size:12px;letter-spacing:2px;color:#8bcfff;font-weight:bold}
+h1{font-size:clamp(36px,6vw,62px);line-height:1.08;margin:17px 0}
+h1 span{color:#159cff}
+.hero p{max-width:540px;line-height:1.7;color:#e1ebf5}
+.search{display:flex;max-width:620px;margin-top:24px;background:white;border-radius:8px;padding:5px}
+.search input{min-width:0;flex:1;border:0;padding:12px;outline:0}
+.search button{border:0;border-radius:5px;background:var(--blue);color:white;padding:0 22px;font-weight:bold}
+.trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;font-size:12px}
+section{padding:38px 0}
+.heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}
+.heading h2{margin:0;font-size:25px}
+.heading a{color:#007be5;font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.category{background:white;border:1px solid #dce6f1;border-radius:10px;padding:22px 12px;text-align:center;cursor:pointer;transition:.2s}
+.category:hover,.product:hover{transform:translateY(-3px);box-shadow:0 8px 22px #08264b12}
+.cat-icon{font-size:36px;margin-bottom:12px}
+.category h3{font-size:15px;margin:8px 0}
+.category p{font-size:12px;color:#71839a;margin-bottom:0}
+.featured{background:#edf4fb}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.product{background:white;border:1px solid #dce6f1;border-radius:10px;padding:15px;transition:.2s}
+.product-img{height:125px;display:grid;place-items:center;background:linear-gradient(140deg,#e6f0fb,#f8fbff);border-radius:7px;font-size:54px}
+.product h3{font-size:15px;min-height:36px}
+.meta{font-size:12px;line-height:1.8;color:#6b7e95}
+.price{font-weight:bold;color:#007be5;margin:12px 0}
+.product button{width:100%}
+.why{background:linear-gradient(110deg,#061c36,#0a3a67);color:white}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.benefits h3{font-size:15px}
+.benefits p{font-size:12px;color:#d1e0f0;line-height:1.6}
+footer{background:#03152b;color:white;padding:35px 0 18px}
+.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer p,footer a{font-size:13px;color:#c8d7e7;line-height:1.8}
+footer h3{font-size:15px}
+.copyright{border-top:1px solid #ffffff24;margin-top:25px;padding-top:16px;font-size:12px;color:#b7c9dc}
+#notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#061c36;color:white;padding:13px 20px;border-radius:8px;display:none;max-width:90%;z-index:5}
+[dir=rtl] body{text-align:right}
+[dir=rtl] .hero{background-image:linear-gradient(270deg,#04182fee,#062b4dd9,#062b4d55),url('https://images.unsplash.com/photo-1496939376851-89342e90adcd?auto=format&fit=crop&w=1800&q=85')}
+@media(max-width:750px){
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .benefits{grid-template-columns:repeat(2,1fr)}
+ .footgrid{grid-template-columns:1fr}
+ nav{gap:18px}
+ .hero{min-height:410px}
+ .heading h2{font-size:21px}
+}
+@media(max-width:380px){
+ .products{grid-template-columns:1fr}
+ .logo{font-size:22px}
+ .search button{padding:0 12px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap top">
+  <a class="logo" href="#">⚓ Marine<span>Parts</span></a>
+  <div class="actions">
+   <button class="btn outline" id="language">العربية</button>
+   <button class="btn primary" onclick="notify('Account registration will be available in a future version.')">Login / Register</button>
+   <button class="btn outline" onclick="showCart()">🛒 <span id="count">0</span></button>
+  </div>
+ </div>
+ <nav class="wrap">
+  <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="#categories" data-en="Categories" data-ar="الفئات">Categories</a>
+  <a href="#products" data-en="Products" data-ar="المنتجات">Products</a>
+  <a href="#suppliers" data-en="Suppliers" data-ar="الموردون">Suppliers</a>
+  <a href="#impa" data-en="IMPA Catalog" data-ar="كتالوج IMPA">IMPA Catalog</a>
+  <a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="wrap hero-inner">
+  <div class="eyebrow" data-en="YOUR GLOBAL MARINE PARTS MARKETPLACE" data-ar="منصتك العالمية لقطع غيار السفن">YOUR GLOBAL MARINE PARTS MARKETPLACE</div>
+  <h1 data-en="Quality Parts.<br><span>Stronger Voyages.</span>" data-ar="قطع موثوقة.<br><span>رحلات أكثر أماناً.</span>">Quality Parts.<br><span>Stronger Voyages.</span></h1>
+  <p data-en="Find marine spare parts and connect with suppliers around the world. Search by IMPA code, part number or product name." data-ar="اعثر على قطع غيار بحرية وتواصل مع موردين حول العالم. ابحث برقم IMPA أو رقم القطعة أو اسم المنتج.">Find marine spare parts and connect with suppliers around the world. Search by IMPA code, part number or product name.</p>
+  <form class="search" id="searchForm">
+   <input id="query" placeholder="Search IMPA code, part number or product..." aria-label="Search products">
+   <button data-en="Search" data-ar="بحث">Search</button>
+  </form>
+  <div class="trust">
+   <span>✓ Global Suppliers</span><span>✓ Marine Equipment</span><span>✓ Worldwide Sourcing</span>
+  </div>
+ </div>
+</section>
+
+<section class="wrap" id="categories">
+ <div class="heading"><h2 data-en="Shop by Category" data-ar="تسوق حسب الفئة">Shop by Category</h2><a href="#products">View Products →</a></div>
+ <div class="categories" id="categoryGrid"></div>
+</section>
+
+<section class="featured" id="products">
+ <div class="wrap">
+  <div class="heading"><h2 data-en="Featured Products" data-ar="منتجات مميزة">Featured Products</h2><a href="#impa" data-en="Search catalog →" data-ar="ابحث في الكتالوج ←">Search catalog →</a></div>
+  <div class="products" id="productGrid"></div>
+  <p id="empty" hidden>No matching demo products found.</p>
+ </div>
+</section>
+
+<section class="why" id="suppliers">
+ <div class="wrap">
+  <div class="heading"><h2 data-en="Your Trusted Marine Partner" data-ar="شريكك البحري الموثوق">Your Trusted Marine Partner</h2></div>
+  <div class="benefits">
+   <div><h3>🛡️ Verified Suppliers</h3><p>Designed to support trusted supplier connections.</p></div>
+   <div><h3>🌍 Global Reach</h3><p>Discover marine parts from suppliers around the world.</p></div>
+   <div><h3>⚙️ Easy Search</h3><p>Find demo products by code, name or manufacturer.</p></div>
+   <div><h3>🚢 Marine Focus</h3><p>A marketplace concept built for maritime businesses.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="wrap" id="impa">
+ <div class="heading"><h2 data-en="Find the Right Part" data-ar="اعثر على القطعة المناسبة">Find the Right Part</h2></div>
+ <p data-en="Search using the field above. This starter includes sample product records only; the complete official IMPA catalog is not yet connected." data-ar="استخدم مربع البحث أعلاه. هذه النسخة تحتوي على بيانات تجريبية فقط، ولم يتم ربط كتالوج IMPA الرسمي الكامل بعد.">Search using the field above. This starter includes sample product records only; the complete official IMPA catalog is not yet connected.</p>
+</section>
+</main>
+
+<footer id="contact">
+ <div class="wrap">
+  <div class="footgrid">
+   <div><a class="logo" href="#">⚓ Marine<span>Parts</span></a><p data-en="Your connection to marine spare parts and worldwide suppliers." data-ar="وجهتك لقطع غيار السفن والموردين حول العالم.">Your connection to marine spare parts and worldwide suppliers.</p></div>
+   <div><h3 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3><a href="#categories">Categories</a><br><a href="#products">Products</a><br><a href="#impa">IMPA Search</a></div>
+   <div><h3 data-en="Contact" data-ar="التواصل">Contact</h3><p>Email: hello@marineparts.example</p><p>Supplier enquiries welcome.</p></div>
+  </div>
+  <div class="copyright">© <span id="year"></span> MarineParts. All rights reserved.</div>
+ </div>
+</footer>
+<div id="notice" role="status"></div>
+
+<script>
+const categories=[
+ {name:"Engine Parts",ar:"قطع المحركات",icon:"⚙️",n:2458},
+ {name:"Pumps & Valves",ar:"المضخات والصمامات",icon:"🔧",n:1567},
+ {name:"Electrical Equipment",ar:"المعدات الكهربائية",icon:"🔌",n:1204},
+ {name:"Navigation",ar:"الملاحة البحرية",icon:"📡",n:1098},
+ {name:"Deck Equipment",ar:"معدات السطح",icon:"⚓",n:986},
+ {name:"Safety Equipment",ar:"معدات السلامة",icon:"🛟",n:742},
+ {name:"Propulsion",ar:"أنظمة الدفع",icon:"🌀",n:1832},
+ {name:"Tools & Workshop",ar:"الأدوات والورشة",icon:"🛠️",n:643}
+];
+const products=[
+ {name:"Marine Diesel Engine",ar:"محرك ديزل بحري",impa:"751232",part:"4JH57",brand:"Yanmar",price:18500,icon:"⚙️",cat:"Engine Parts"},
+ {name:"Bilge Water Pump",ar:"مضخة مياه القاع",impa:"590235",part:"900 GPH",brand:"Rule",price:180,icon:"🔵",cat:"Pumps & Valves"},
+ {name:"Marine Alternator",ar:"مولد كهربائي بحري",impa:"710321",part:"24V-120A",brand:"Valeo",price:620,icon:"🔋",cat:"Electrical Equipment"},
+ {name:"Navigation Radar",ar:"رادار ملاحي بحري",impa:"370512",part:"JMA-5211",brand:"JRC",price:8750,icon:"📡",cat:"Navigation"},
+ {name:"Deck Winch",ar:"ونش سطح السفينة",impa:"610220",part:"DW-240",brand:"OceanTech",price:1280,icon:"⚓",cat:"Deck Equipment"},
+ {name:"Fire Extinguisher",ar:"طفاية حريق",impa:"330106",part:"CO2-6KG",brand:"Gloria",price:145,icon:"🧯",cat:"Safety Equipment"},
+ {name:"Bronze Propeller",ar:"مروحة دفع برونزية",impa:"610201",part:"SB-19",brand:"MarineWorks",price:2340,icon:"🌀",cat:"Propulsion"},
+ {name:"Marine Tool Set",ar:"طقم أدوات بحرية",impa:"590410",part:"MT-24",brand:"ProMarine",price:95,icon:"🛠️",cat:"Tools & Workshop"}
+];
+let lang="en",cart=[],filter="";
+const $=id=>document.getElementById(id);
+function renderCategories(){
+ $("categoryGrid").innerHTML=categories.map(c=>`<div class="category" tabindex="0" data-cat="${c.name}"><div class="cat-icon">${c.icon}</div><h3>${lang==="en"?c.name:c.ar}</h3><p>${c.n.toLocaleString()} ${lang==="en"?"items":"قطعة"}</p></div>`).join("");
+ document.querySelectorAll("[data-cat]").forEach(el=>el.onclick=()=>{filter=el.dataset.cat;renderProducts();$("products").scrollIntoView({behavior:"smooth"});});
+}
+function renderProducts(q=""){
+ const query=q.toLowerCase().trim();
+ const found=products.filter(p=>(!filter||p.cat===filter)&&(!query||[p.name,p.ar,p.impa,p.part,p.brand,p.cat].some(v=>v.toLowerCase().includes(query))));
+ $("productGrid").innerHTML=found.map(p=>`<article class="product"><div class="product-img">${p.icon}</div><h3>${lang==="en"?p.name:p.ar}</h3><div class="meta">IMPA: ${p.impa}<br>Part No: ${p.part}<br>Brand: ${p.brand}</div><div class="price">$${p.price.toLocaleString()}</div><button class="btn primary" data-add="${p.impa}">${lang==="en"?"Add to Cart":"أضف إلى السلة"}</button></article>`).join("");
+ $("empty").hidden=found.length>0;
+ document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{cart.push(products.find(p=>p.impa===b.dataset.add));$("count").textContent=cart.length;notify(lang==="en"?"Added to cart":"تمت الإضافة إلى السلة");});
+}
+function notify(msg){$("notice").textContent=msg;$("notice").style.display="block";clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>$("notice").style.display="none",2600);}
+function showCart(){if(!cart.length){notify(lang==="en"?"Your cart is empty.":"سلة المشتريات فارغة.");return;}const total=cart.reduce((s,p)=>s+p.price,0);notify(`${lang==="en"?"Cart items":"عدد المنتجات"}: ${cart.length} — Total: $${total.toLocaleString()}. ${lang==="en"?"Checkout is not connected yet.":"الدفع غير متاح حالياً."}`);}
+$("searchForm").addEventListener("submit",e=>{e.preventDefault();filter="";renderProducts($("query").value);$("products").scrollIntoView({behavior:"smooth"});});
+$("language").onclick=()=>{
+ lang=lang==="en"?"ar":"en";
+ document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ $("language").textContent=lang==="en"?"العربية":"English";
+ document.querySelectorAll("[data-en][data-ar]").forEach(el=>el.innerHTML=el.dataset[lang]);
+ $("query").placeholder=lang==="en"?"Search IMPA code, part number or product...":"ابحث برقم IMPA أو رقم القطعة أو اسم المنتج...";
+ renderCategories();renderProducts();
+};
+$("year").textContent=new Date().getFullYear();
+renderCategories();renderProducts();
+</script>
+</body>
+</html>
